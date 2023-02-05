@@ -28,4 +28,9 @@ void PrintArray(int[] array)
 }
 
 int arraySize = GetNumber("Inter needed size of array>> ");
+if (arraySize < 0)
+{
+    System.Console.WriteLine("Restart the programm and enter anoter number");
+    return;
+}
 PrintArray(MakeArray(arraySize));

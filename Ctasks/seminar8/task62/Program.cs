@@ -15,12 +15,25 @@
 
 void FillMatrixSpirally(int[,] matrix)
 {
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    int raw = matrix.GetLength(0);
+    int column = matrix.GetLength(1);
+    int temp = 1;
+    int i = 0;
+    int j = 0;
+
+    while (temp <= raw * column)
     {
-        for (int j = 0; j < matrix.GetLength(0); j++)
-        {
-            matrix[i, j] = 
-        }
+        matrix[i, j] = temp;
+        temp++;
+
+        if (i <= j + 1 && i + j < column - 1)
+            j++;
+        else if (i < j && i + j >= raw - 1)
+            i++;
+        else if (i >= j && i + j > column - 1)
+            j--;
+        else
+            i--;
     }
 }
 
@@ -30,7 +43,7 @@ void PrintArray2D(int[,] array2D)
     {
         for (int j = 0; j < array2D.GetLength(1); j++)
         {
-            System.Console.Write($"{array2D[i, j],3}");
+            System.Console.Write($"{array2D[i, j],-3}|");
         }
         System.Console.WriteLine();
     }
@@ -40,5 +53,5 @@ void PrintArray2D(int[,] array2D)
 
 int[,] array2D = new int[4, 4];
 
-FillArray2D(array2D);
+FillMatrixSpirally(array2D);
 PrintArray2D(array2D);
